@@ -1,0 +1,27 @@
+jasypt:
+  encryptor:
+    password: yourpassword
+spring:
+  application:
+    name: demo
+  config:
+    import:
+     - classpath:/application.properties
+  cloud:
+    nacos:
+      username: ${nacos.username}
+      password: ${nacos.password}
+      discovery:
+        enabled: true
+        server-addr: ${nacos.server-addr}
+        namespace: ${nacos.config.namespace}
+      config:
+        enabled: true
+        server-addr: ${nacos.server-addr}
+        context-path: /nacos
+        namespace: ${nacos.config.namespace}
+        file-extension: yaml
+        extension-configs:
+          - data-id: demo.yaml
+            group: DEFAULT_GROUP
+            refresh: true
